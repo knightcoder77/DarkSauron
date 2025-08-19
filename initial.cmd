@@ -1,4 +1,4 @@
- 
+@echo off
 @REM initial stager for RAT
 @REM created by: DARk_LORD
 
