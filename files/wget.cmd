@@ -1,6 +1,6 @@
 REM get admin permissions for script
 @echo off
-:: BatchGotAdmin
+REM :: BatchGotAdmin
 :-------------------------------------
 REM  --> check for permissions
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
