@@ -1,4 +1,4 @@
-REM get admin permissions for script
+REM : :get admin permissions for script
 @echo off
 REM :: BatchGotAdmin
 :-------------------------------------
