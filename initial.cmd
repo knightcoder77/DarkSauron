@@ -20,7 +20,7 @@ powershell ./wget.cmd
 
 
 @REM cd  back into the inittial location
-cd "%INITIALPATH%"
+@REM cd "%INITIALPATH%"
 @REM del initial.cmd
 @REM i am just testing the git updating
 
