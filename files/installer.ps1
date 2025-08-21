@@ -24,7 +24,7 @@ echo $path
  cd $path 
  echo "" > poc. txt
  cd C:\Users\lange\Desktop\rat\files
- pause
+ 
 
 
 
