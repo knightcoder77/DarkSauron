@@ -25,7 +25,7 @@ $initial_dir = %cd%
  echo "" > poc. txt
  cd $initial_dir
  
- del insatller.ps1
+ del installer.ps1
 
 
 
