@@ -23,8 +23,7 @@ $initial_dir = %cd%
  mkdir $path 
  cd $path 
  echo "" > poc. txt
- cd $initial_dir
- del installer.ps1
+
 
 
 
