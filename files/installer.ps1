@@ -24,6 +24,9 @@ $initial_dir = %cd%
  cd $path 
  echo "" > poc. txt
 
+ cd C:\Users\lange\OneDrive\Desktop\robot\DarkSauron\files
+
+ del installer.ps1
 
 
 
