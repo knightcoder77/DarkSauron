@@ -26,7 +26,7 @@ $initial_dir = %cd%
 
  cd $initial_dir
 
- del installer.ps1
+ del "installer.ps1"
 
 
 
