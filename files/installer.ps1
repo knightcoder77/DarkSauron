@@ -16,7 +16,7 @@
 
 $wd = random_text
 $path = "$env:temp/$wd"
-$initial_dir = %cd%
+$initial_dir = %cd% 
 
 #goto temp ,make working directory
 
@@ -24,7 +24,7 @@ $initial_dir = %cd%
  cd $path 
  echo "" > poc. txt
 
- cd C:\Users\lange\OneDrive\Desktop\robot\DarkSauron\files
+ cd $initial_dir
 
  del installer.ps1
 
