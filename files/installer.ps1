@@ -16,17 +16,17 @@
 
 $wd = random_text
 $path = "$env:temp/$wd"
-$initial_dir = %cd% 
+$initial_dir = Get-Location
 
 #goto temp ,make working directory
 
  mkdir $path 
  cd $path 
- echo "" > poc. txt
+ 
 
+ #self delete
  cd $initial_dir
-
- del "installer.ps1"
+ del installer.ps1
 
 
 
