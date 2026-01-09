@@ -23,7 +23,7 @@ function create_account {
      }
         process {
             New-LocalUser "$uname" -pword $pword-FullName "$uname" -Description "Temporary local admin"
-            write-Verbose "$uname local user crated" Add-LocalGroupMember -Group "Administrators" -Member "$uname"
+            Write-Verbose "$uname local user crated" Add-LocalGroupMember -Group "Administrators" -Member "$uname"
             
         }
         end{  
