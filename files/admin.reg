@@ -1,4 +1,5 @@
 Windows Registry Editor Version 5.00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion
-\Winlogon\SpecialAccounts\UserList]"DarkSauron"=dword:00000000 ;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+NT\CurrentVersion\Winlogon\SpecialAccounts\UserList]
+"DarkSauron"=dword:00000000 ;

